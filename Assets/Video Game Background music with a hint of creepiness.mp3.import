@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Video Game Background music with a hint of creepiness.mp3-5635083c47399cd538adcce56557a2e5.mp3str"
+
+[deps]
+
+source_file="res://Assets/Video Game Background music with a hint of creepiness.mp3"
+dest_files=[ "res://.import/Video Game Background music with a hint of creepiness.mp3-5635083c47399cd538adcce56557a2e5.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
