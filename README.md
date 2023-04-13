@@ -11,7 +11,7 @@ Built using Godot 3.5
 Features include:
 - an explorable, procedurally-generated maze
 - a first-person-playable-character
-- A bomb to interact with
+- A bomb to interact with, and another one to throw
 - An enemy robot to interact with
 - music
 - A main, in-game, and end-game menu (2 different ones)
