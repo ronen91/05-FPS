@@ -14,7 +14,6 @@ Features include:
 - A bomb to interact with
 - An enemy robot to interact with
 - music
-- screenshake when bomb goes off
 - A main, in-game, and end-game menu (2 different ones)
 - A CSG model to help mark where the 2nd bomb is
 
