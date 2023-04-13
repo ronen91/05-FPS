@@ -1,6 +1,12 @@
 extends RigidBody
 
+export var trauma_amount := 0.1
+
+
 func _ready():
+	$Timer.start()
+
+func light_fuse():
 	$Timer.start()
 
 func _on_bomb_body_entered(body):
@@ -14,6 +20,19 @@ func _on_bomb_body_entered(body):
 
 
 func _on_Timer_timeout():
-	$Flash.cause_trauma()
-	Global.update_time(-1)
+	cause_trauma()
+	$bomb.hide()
+	$AnimatedSprite3D.show()
+	$AnimatedSprite3D.play()
+	
+
+
+
+func cause_trauma():
+	var trauma_areas = $Flash.get_overlapping_areas()
+	for area in trauma_areas:
+		if area.has_method("add_trauma"):
+			area.add_trauma(trauma_amount)
+
+func _on_AnimatedSprite3D_animation_finished():
 	queue_free()
