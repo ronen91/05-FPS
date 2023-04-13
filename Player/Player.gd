@@ -26,7 +26,7 @@ func get_input():
 
 func _unhandled_input(event):
 	if event is InputEventMouseMotion:
-		$Pivot.rotate_x(-event.relative.y * mouse_sensitivity)
+		$Pivot.rotate_x(event.relative.y * mouse_sensitivity)
 		rotate_y(-event.relative.x * mouse_sensitivity)
 		$Pivot.rotation.x = clamp($Pivot.rotation.x, -mouse_range, mouse_range)
 
@@ -40,6 +40,8 @@ func _physics_process(delta):
 
 	if Input.is_action_just_pressed("pickup"):
 		pickup()
+	if Input.is_action_just_pressed("throw"):
+		throw()
 
 
 func pickup():
@@ -50,6 +52,18 @@ func pickup():
 		bomb = to_pickup.Pickup.instance()
 		$Pivot.add_child(bomb)
 		to_pickup.queue_free()
+
+func throw():
+	if $Pivot.has_node("bomb"):
+		var Bombs = get_node_or_null("/root/Game/Bombs")
+		if Bombs != null:
+			var b = $Pivot/bomb
+			var pos = b.global_transform.origin
+			$Pivot.remove_child(b)
+			Bombs.add_child(b)
+			b.transform.origin = pos
+			b.apply_impulse(pos - Vector3(0,-0.1,-0.1), Vector3(0,12,12))
+			b.light_fuse()
 
 #func _on_Area_body_entered(body):
 	#if body.name == "bomb":

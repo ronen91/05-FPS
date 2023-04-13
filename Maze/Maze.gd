@@ -46,6 +46,7 @@ func check_neighbors(cell, unvisited):
 	for n in cell_walls.keys():
 		if cell + n in unvisited:
 			list.append(cell + n)
+	return list
 	
 func make_maze():
 	var unvisited = []  # array of unvisited tiles
