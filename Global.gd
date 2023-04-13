@@ -1,6 +1,7 @@
 extends Node
 
-var time = 10
+var time = 15
+var how_lost = 0
 
 func _ready():
 	pause_mode = PAUSE_MODE_PROCESS		# global should never be paused
@@ -22,6 +23,6 @@ func update_time(_t):
 	var HUD = get_node_or_null("/root/Maze/UI/HUD")
 	if HUD != null:
 		HUD.update_time()
-	if time <= 0:
+	if $bomb.Timer2 <= 0:
 		 var _scene = get_tree().change_scene("res://UI/Lose2.tscn")
 	

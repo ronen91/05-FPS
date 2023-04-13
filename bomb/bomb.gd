@@ -4,7 +4,7 @@ export var trauma_amount := 0.1
 
 
 func _ready():
-	$Timer.start()
+	pass
 
 func light_fuse():
 	$Timer.start()
@@ -16,7 +16,6 @@ func _on_bomb_body_entered(body):
 		if exit != null:
 			exit.unlock()
 			queue_free()
-	$Enemy.die()
 
 
 func _on_Timer_timeout():
@@ -36,3 +35,11 @@ func cause_trauma():
 
 func _on_AnimatedSprite3D_animation_finished():
 	queue_free()
+
+
+func _on_Timer2_timeout():
+	cause_trauma()
+	$bomb.hide()
+	$AnimatedSprite3D.show()
+	$AnimatedSprite3D.play()
+	var _scene = get_tree().change_scene("res://UI/Lose2.tscn")
